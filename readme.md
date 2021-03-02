@@ -1,4 +1,6 @@
 # Demo API
+[![Build](https://github.com/Malagutte/demo/actions/workflows/buildl.yml/badge.svg)](https://github.com/Malagutte/demo/actions/workflows/buildl.yml)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Malagutte_demo)](https://sonarcloud.io/dashboard?id=Malagutte_demo)
 
 Spring boot challenge:
 
