@@ -92,3 +92,4 @@ mvn spring-boot:run -P local
 java -jar -Dspring.profiles.active=local target/demo-0.0.1-SNAPSHOT.jar
 ```
 
+link para o [swagger](http:localhost:8080/swagger-ui.html)
