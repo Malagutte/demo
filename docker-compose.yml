@@ -3,7 +3,7 @@ version: '3'
 services:
 
   db:
-    image: oscarfonts/h2
+    image: oscarfonts/h2:1.4.199
     ports:
       - 1521:1521
       - 81:81
@@ -11,7 +11,7 @@ services:
       H2_OPTIONS: "-ifNotExists"
 
   zookeeper:
-    image: confluentinc/cp-zookeeper:latest
+    image: confluentinc/cp-zookeeper:6.1.0
     networks: 
       - broker-kafka
     environment:
@@ -19,7 +19,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
 
   kafka:
-    image: confluentinc/cp-kafka:latest
+    image: confluentinc/cp-kafka:6.1.0
     networks: 
       - broker-kafka
     depends_on:
