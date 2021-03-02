@@ -85,9 +85,24 @@ docker-compose up -d
 #### Create topic at kafka(Optional) :
 The project will create the topic  **novice-players**, as it was configured to perform such action but if you want to create manually this is the command
 ```bash
-docker-compose exec broker kafka-topics --create --bootstrap-server \
+docker-compose exec kafka kafka-topics --create --bootstrap-server \
 localhost:9092 --replication-factor 1 --partitions 1 --topic novice-players
 ```
+
+
+## Search messages at Kafka
+There are two ways to consult the messages within the topic:
+Using the command:
+```bash
+docker-compose exec kafka kafka-console-consumer  --bootstrap-server localhost:9092 --topic novice-players --from-beginning
+```
+
+or 
+
+Using [kafdrop](http://localhost:19000/topic/novice-players/messages)
+
+![kafdrop](https://raw.githubusercontent.com/obsidiandynamics/kafdrop/master/docs/images/overview.png)
+
 
 ## Run application
 ```bash
@@ -103,4 +118,4 @@ mvn spring-boot:run -P local
 java -jar -Dspring.profiles.active=local target/demo-0.0.1-SNAPSHOT.jar
 ```
 
-link para o [swagger](http:localhost:8080/swagger-ui.html)
+Acess to swagger [here!](http:localhost:8080/swagger-ui.html)
