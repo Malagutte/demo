@@ -1,5 +1,7 @@
 package br.com.example.demo.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -26,11 +28,11 @@ public class PlayerController {
 
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Ok", response = PlayerResponseDTO.class) })
     @PostMapping(path = "/players", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> processPlayers(@RequestBody PlayerRequestDTO request) {
+    public ResponseEntity<Object> processPlayers(@RequestBody PlayerRequestDTO request) {
 
         try {
-            var response = PlayerResponseDTO.builder().result(playerService.processPlayers(request.getPlayers()))
-                    .build();
+            List<String> processPlayers = playerService.processPlayers(request.getPlayers());
+            var response = PlayerResponseDTO.builder().result(processPlayers).build();
             return ResponseEntity.ok().body(response);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e);

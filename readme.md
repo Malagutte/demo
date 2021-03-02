@@ -68,6 +68,10 @@ Build project
 ```bash
 mvn clean install
 ```
+or
+```bash
+./mvnw clean install
+```
 
 Start services
 ```bash
@@ -86,6 +90,11 @@ localhost:9092 --replication-factor 1 --partitions 1 --topic novice-players
 ## Run application
 ```bash
 mvn spring-boot:run -P local
+```
+ or 
+
+ ```bash
+./mvnw spring-boot:run -P local
 ```
  or 
 ```bash

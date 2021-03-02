@@ -18,6 +18,26 @@
 
 	<properties>
 		<java.version>15</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<sonar.projectKey>Malagutte_demo</sonar.projectKey>
+		<sonar.proejctName>demo</sonar.proejctName>
+
+		<sonar.organization>malagutte</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+		<sonar.coverage.exclusions>
+			src/main/java/br/com/example/demo/DemoApplication.java,
+			src/main/java/br/com/example/demo/configs/*,
+			src/main/java/br/com/example/demo/dtos/*,
+			src/main/java/br/com/example/demo/dtos/request/*,
+			src/main/java/br/com/example/demo/dtos/response/*,
+			src/main/java/br/com/example/demo/models/*,
+			src/main/java/br/com/example/demo/repositories/*,
+			src/main/java/br/com/example/demo/constants/*,
+			src/main/java/br/com/example/demo/config/*
+		</sonar.coverage.exclusions>
+
 	</properties>
 
 	<dependencies>
@@ -42,18 +62,13 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<optional>true</optional>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
@@ -91,11 +106,35 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.sonarsource.scanner.maven</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>3.6.0.1398</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
 	<profiles>
-		
+
 		<profile>
 			<id>local</id>
 			<properties>
